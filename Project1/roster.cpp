@@ -1,12 +1,12 @@
 #include <iostream>
 #include <string>
-#include <vector>
 
+#include "degree.h"
+//#include "roster.h"
 //#include "student.h"
 //#include "networkStudent.h"
 //#include "securityStudent.h"
 //#include "softwareStudent.h"
-//#include "roster.h"
 
 using namespace std;
 
