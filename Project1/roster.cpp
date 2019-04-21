@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
-
+#include <vector>
+#include <sstream>
 #include "degree.h"
 #include "roster.h"
 #include "student.h"
@@ -22,9 +23,40 @@ int main() {
 
 	cout << "Lee Scholl - #000598397" << endl;
 	cout << "Scripting and Programming - Applications - C867" << endl;
-	cout << "Language used C++" << endl;
+	cout << "Language used: C++" << endl;
 
 	Roster classRoster;
+
+	vector<string> temp;
+	for (int i = 0; i < 5; i++)	{
+		temp.push_back(studentData[i]);
+
+		stringstream ss(temp[i]);
+		vector<string> result;
+
+		while ( ss.good() )
+		{
+			string substr;
+			getline(ss, substr, ',');
+			cout << substr << endl;
+			result.push_back(substr);
+		}
+
+		
+
+		string studentID; //NEXT - Assign above code to this variable, maybe need to create multilevel array of the whole thing first?
+		string firstName;
+		string lastName;
+		string email;
+		int age;
+		int daysInCourse1;
+		int daysInCourse2;
+		int daysInCourse3;
+		Degree degree;
+
+		//add(studentID,firstName,lastName,email,age,daysInCourse1,daysInCourse2,daysInCourse3, degree);
+		
+	}
 	
 	return 0;
 }
