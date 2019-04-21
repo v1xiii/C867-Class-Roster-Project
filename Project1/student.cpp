@@ -5,6 +5,49 @@
 
 using namespace std;
 
+Student::Student(string studentID, string firstName, string lastName, string email, int age, int daysToComplete, Degree degree) {
+	this->setStudentID(studentID);
+	this->setFirstName(firstName);
+	this->setLastName(lastName);
+	this->setEmail(email);
+	this->setAge(age);
+	this->setDaysToComplete(daysToComplete);
+	this->setDegree(degree);
+}
+
+Student::~Student()
+{
+}
+
+// setters
+void Student::setStudentID(string studentID) {
+	this->studentID = studentID;
+}
+
+void Student::setFirstName(string firstName) {
+	this->firstName = firstName;
+}
+
+void Student::setLastName(string lastName) {
+	this->lastName = lastName;
+}
+
+void Student::setEmail(string email) {
+	this->email = email;
+}
+
+void Student::setAge(int age) {
+	this->age = age;
+}
+
+void Student::setDaysToComplete(int daysToComplete) {
+
+}
+
+void Student::setDegree(Degree degree) {
+	this->degree = degree;
+}
+
 // getters
 string Student::getStudentID() {
 	return studentID;
@@ -26,39 +69,22 @@ int Student::getAge() {
 	return age;
 }
 
-int* Student::getDaysToComplete() {
-	return daysToComplete;
+int Student::getDaysToComplete() {
+	return daysToComplete[3];
 }
 
 Degree Student::getDegree() {
 	return degree;
 }
 
-// setters
-void Student::setStudentID(string studentID) {
+// helpers
+/*
+void Student::print() {
 	return;
 }
 
-void Student::setFirstName(string firstName) {
+
+Degree Student::getDegreeProgram() {
 	return;
 }
-
-void Student::setLastName(string lastName) {
-	return;
-}
-
-void Student::setEmail(string email) {
-	return;
-}
-
-void Student::setAge(int age) {
-	return;
-}
-
-void Student::setDaysToComplete(int* daysToComplete) {
-	return;
-}
-
-void Student::setDegree(Degree degree) {
-
-}
+*/
