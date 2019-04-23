@@ -20,7 +20,8 @@ public:
 	void printDaysInCourse(string studentID);
 	void printInvalidEmails();
 	void printByDegreeProgram(int degree);
-	Student* classRosterArray[5]; // array of student objects
+	//Student* classRosterArray[5]; // array of student objects
+	vector<Student*> classRosterArray;
 
 private:
 

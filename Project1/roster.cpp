@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+//#include <array>
 #include <vector>
 #include <sstream>
 #include "degree.h"
@@ -11,6 +12,10 @@
 
 using namespace std;
 
+Roster::Roster()
+{
+}
+
 int main() {
 
 	const string studentData[] = {
@@ -21,75 +26,95 @@ int main() {
 		"A5,Lee,Scholl,lschol1@wgu.edu,36,20,30,40,SOFTWARE"
 	};
 
+	vector<string> studentDataV;
+	for (string i: studentData) { // convert studentData array to vector
+		studentDataV.push_back(i);
+	}
+
 	cout << "Lee Scholl - #000598397" << endl;
 	cout << "Scripting and Programming - Applications - C867" << endl;
 	cout << "Language used: C++" << endl;
 
-	Roster classRoster;
+	Roster* classRoster;
 
-	vector<string> temp;
-	for (int i = 0; i < 5; i++)	{
-		temp.push_back(studentData[i]);
-
-		stringstream ss(temp[i]);
+	//vector<Student*> classRosterArray;
+	
+	for (int i = 0; i < 1; i++)
+	{
+		stringstream ss(studentDataV[i]);
 		vector<string> result;
-
-		while ( ss.good() )
-		{
+		
+		while ( ss.good() )	{
 			string substr;
 			getline(ss, substr, ',');
-			cout << substr << endl;
 			result.push_back(substr);
 		}
 
-		
+		string studentID = result[0];
+		string firstName = result[1];
+		string lastName = result[2];
+		string email = result[3];
+		int age = stoi(result[4]);
+		int daysInCourse1 = stoi(result[5]);
+		int daysInCourse2 = stoi(result[6]);
+		int daysInCourse3 = stoi(result[7]);
+		string tempDegree = result[8];
 
-		string studentID; //NEXT - Assign above code to this variable, maybe need to create multilevel array of the whole thing first?
-		string firstName;
-		string lastName;
-		string email;
-		int age;
-		int daysInCourse1;
-		int daysInCourse2;
-		int daysInCourse3;
 		Degree degree;
-
-		//add(studentID,firstName,lastName,email,age,daysInCourse1,daysInCourse2,daysInCourse3, degree);
 		
+		if (tempDegree == "SECURITY")
+		{
+			degree = SECURITY;
+		}
+		else if (tempDegree == "NETWORK")
+		{
+			degree = NETWORK;
+		}
+		else if (tempDegree == "SOFTWARE")
+		{
+			degree = SOFTWARE;
+		}
+		
+		cout << studentID << endl;
+		cout << firstName << endl;
+		cout << lastName << endl;
+		cout << email << endl;
+		cout << age << endl;
+		cout << daysInCourse1 << endl;
+		cout << daysInCourse2 << endl;
+		cout << daysInCourse3 << endl;
+		cout << degree << endl;
+		
+		classRoster->add(studentID, firstName, lastName, email, age, daysInCourse1, daysInCourse2, daysInCourse3, degree);
 	}
 	
 	return 0;
 }
 
+void Roster::add(string studentID, string firstName, string lastName, string email, int age, int daysInCourse1, int daysInCourse2, int daysInCourse3, Degree degree) {
 
-Roster::Roster()
-{
+}
+
+void Roster::remove(string studentID) {
+
+}
+
+void Roster::printAll() {
+
+}
+
+void Roster::printDaysInCourse(string studentID) {
+
+}
+
+void Roster::printInvalidEmails() {
+
+}
+
+void Roster:: printByDegreeProgram(int degree) {
+
 }
 
 Roster::~Roster()
 {
-}
-
-void add(string studentID, string firstName, string lastName, string email, int age, int daysInCourse1, int daysInCourse2, int daysInCourse3, Degree) {
-
-}
-
-void remove(string studentID) {
-
-}
-
-void printAll() {
-
-}
-
-void printDaysInCourse(string studentID) {
-
-}
-
-void printInvalidEmails() {
-
-}
-
-void printByDegreeProgram(int degree) {
-
 }
