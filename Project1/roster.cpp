@@ -1,6 +1,5 @@
 #include <iostream>
 #include <string>
-//#include <array>
 #include <vector>
 #include <sstream>
 #include "degree.h"
@@ -31,15 +30,15 @@ int main() {
 		studentDataV.push_back(i);
 	}
 
-	cout << "Lee Scholl - #000598397" << endl;
-	cout << "Scripting and Programming - Applications - C867" << endl;
-	cout << "Language used: C++" << endl;
+	cout << " Lee Scholl - #000598397                         |" << endl;
+	cout << " Scripting and Programming - Applications - C867 |" << endl;
+	cout << " Language used: C++                              |" << endl;
+	cout << "==================================================" << endl;
+	cout << endl;
 
-	Roster* classRoster;
-
-	//vector<Student*> classRosterArray;
+	Roster classRoster;
 	
-	for (int i = 0; i < 1; i++)
+	for (int i = 0; i < 1; i++) // currently limiting loop to first item
 	{
 		stringstream ss(studentDataV[i]);
 		vector<string> result;
@@ -75,24 +74,26 @@ int main() {
 			degree = SOFTWARE;
 		}
 		
-		cout << studentID << endl;
-		cout << firstName << endl;
-		cout << lastName << endl;
-		cout << email << endl;
-		cout << age << endl;
-		cout << daysInCourse1 << endl;
-		cout << daysInCourse2 << endl;
-		cout << daysInCourse3 << endl;
-		cout << degree << endl;
+		//cout << studentID << endl;
+		//cout << firstName << endl;
+		//cout << lastName << endl;
+		//cout << email << endl;
+		//cout << age << endl;
+		//cout << daysInCourse1 << endl;
+		//cout << daysInCourse2 << endl;
+		//cout << daysInCourse3 << endl;
+		//cout << degree << endl;
 		
-		classRoster->add(studentID, firstName, lastName, email, age, daysInCourse1, daysInCourse2, daysInCourse3, degree);
+		classRoster.add(studentID, firstName, lastName, email, age, daysInCourse1, daysInCourse2, daysInCourse3, degree);
 	}
-	
+
 	return 0;
 }
 
 void Roster::add(string studentID, string firstName, string lastName, string email, int age, int daysInCourse1, int daysInCourse2, int daysInCourse3, Degree degree) {
-
+	int daysInCourse[3] = { daysInCourse1, daysInCourse2, daysInCourse3 };
+	classRosterArray[0] = new Student(studentID, firstName, lastName, email, age, daysInCourse[3], degree);
+	classRosterArray[0]->print();
 }
 
 void Roster::remove(string studentID) {

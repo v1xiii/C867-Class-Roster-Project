@@ -42,8 +42,6 @@ public:
 	Degree getDegree();
 
 	// helpers
-	/*
 	virtual void print();
-	virtual Degree getDegreeProgram();
-	*/
+	//virtual Degree getDegreeProgram();
 };

@@ -78,12 +78,18 @@ Degree Student::getDegree() {
 }
 
 // helpers
-/*
+
 void Student::print() {
-	return;
+	cout 
+	<< getStudentID() << "\t" 
+	<<	"First Name: " << getFirstName() << "\t" 
+	<< "Last Name: " << getLastName() << "\t" 
+	<< "Age: " << getAge() << "\t\t" 
+	<< "daysInCourse: " << "(days1, days2, days3)" 
+	<< " Degree Program: " << getDegree()
+	<< endl;
 }
-
-
+/*
 Degree Student::getDegreeProgram() {
 	return;
 }
