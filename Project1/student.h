@@ -13,15 +13,14 @@ private:
 	string lastName;
 	string email;
 	int age;
-	int daysToComplete[3];
 	Degree degree;
+
+protected:
+	int daysToComplete[3];
 
 public:
 	// constructor
-	Student(string studentID, string firstName, string lastName, string email, int age, int daysToComplete, Degree degree);
-	
-	// destructor
-	~Student();
+	Student(string studentID, string firstName, string lastName, string email, int age, int* daysToComplete, Degree degree);
 
 	// setters
 	void setStudentID(string studentID);
@@ -29,7 +28,7 @@ public:
 	void setLastName(string lastName);
 	void setEmail(string email);
 	void setAge(int age);
-	void setDaysToComplete(int daysToComplete);
+	void setDaysToComplete(int* daysToComplete);
 	void setDegree(Degree degree);
 
 	// getters
@@ -38,10 +37,13 @@ public:
 	string getLastName();
 	string getEmail();
 	int getAge();
-	int getDaysToComplete();
+	int* getDaysToComplete();
 	Degree getDegree();
 
 	// helpers
 	virtual void print();
-	//virtual Degree getDegreeProgram();
+	virtual Degree getDegreeProgram();
+
+	// destructor
+	~Student();
 };

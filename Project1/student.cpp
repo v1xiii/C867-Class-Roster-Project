@@ -5,7 +5,7 @@
 
 using namespace std;
 
-Student::Student(string studentID, string firstName, string lastName, string email, int age, int daysToComplete, Degree degree) {
+Student::Student(string studentID, string firstName, string lastName, string email, int age, int* daysToComplete, Degree degree) {
 	this->setStudentID(studentID);
 	this->setFirstName(firstName);
 	this->setLastName(lastName);
@@ -40,8 +40,10 @@ void Student::setAge(int age) {
 	this->age = age;
 }
 
-void Student::setDaysToComplete(int daysToComplete) {
-
+void Student::setDaysToComplete(int* daysToComplete) {
+	for (int i = 0; i < 3; i++)	{
+		this->daysToComplete[i] = daysToComplete[i];
+	}
 }
 
 void Student::setDegree(Degree degree) {
@@ -69,8 +71,8 @@ int Student::getAge() {
 	return age;
 }
 
-int Student::getDaysToComplete() {
-	return daysToComplete[3];
+int* Student::getDaysToComplete() {
+	return this->daysToComplete;
 }
 
 Degree Student::getDegree() {
@@ -80,17 +82,15 @@ Degree Student::getDegree() {
 // helpers
 
 void Student::print() {
-	cout 
-	<< getStudentID() << "\t" 
-	<<	"First Name: " << getFirstName() << "\t" 
-	<< "Last Name: " << getLastName() << "\t" 
-	<< "Age: " << getAge() << "\t\t" 
-	<< "daysInCourse: " << "(days1, days2, days3)" 
-	<< " Degree Program: " << getDegree()
-	<< endl;
+	cout << getStudentID() << "\t";
+	cout << "First Name: " << getFirstName() << "\t";
+	cout << "Last Name: " << getLastName() << "\t";
+	cout << "Age: " << getAge() << "\t";
+	cout << "daysInCourse: " << daysToComplete[0] << "," << daysToComplete[1] << "," << daysToComplete[2] << "\t";
+	cout << " Degree Program: " << getDegree();
+	cout << endl;
 }
-/*
+
 Degree Student::getDegreeProgram() {
-	return;
+	return UNDEFINED;
 }
-*/
