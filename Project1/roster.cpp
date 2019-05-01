@@ -2,12 +2,12 @@
 #include <string>
 #include <vector>
 #include <sstream>
-#include "degree.h"
+//#include "degree.h"
 #include "roster.h"
 #include "student.h"
-//#include "networkStudent.h"
+#include "networkStudent.h"
 #include "securityStudent.h"
-//#include "softwareStudent.h"
+#include "softwareStudent.h"
 
 using namespace std;
 
@@ -38,7 +38,7 @@ int main() {
 
 	Roster classRoster;
 	
-	for (int i = 0; i < 5; i++) // currently limiting loop to first item
+	for (int i = 0; i < 5; i++)
 	{
 		stringstream ss(studentDataV[i]);
 		vector<string> result;
@@ -79,12 +79,39 @@ int main() {
 
 	return 0;
 }
-// build switch for degree type
+
 void Roster::add(string studentID, string firstName, string lastName, string email, int age, int daysInCourse1, int daysInCourse2, int daysInCourse3, Degree degree) {
 	int daysInCourse[3] = { daysInCourse1, daysInCourse2, daysInCourse3 };
-	classRosterArray[arraySize] = new securityStudent(studentID, firstName, lastName, email, age, daysInCourse, degree);
-	classRosterArray[arraySize]->print();
-	arraySize++;
+	
+	switch (degree)
+	{
+	case UNKNOWN:
+		classRosterArray[arraySize] = new Student(studentID, firstName, lastName, email, age, daysInCourse, degree);
+		classRosterArray[arraySize]->print();
+		arraySize++;
+		break;
+	case SECURITY:
+		classRosterArray[arraySize] = new securityStudent(studentID, firstName, lastName, email, age, daysInCourse, degree);
+		classRosterArray[arraySize]->print();
+		arraySize++;
+		break;
+	case NETWORK:
+		classRosterArray[arraySize] = new networkStudent(studentID, firstName, lastName, email, age, daysInCourse, degree);
+		classRosterArray[arraySize]->print();
+		arraySize++;
+		break;
+	case SOFTWARE:
+		classRosterArray[arraySize] = new softwareStudent(studentID, firstName, lastName, email, age, daysInCourse, degree);
+		classRosterArray[arraySize]->print();
+		arraySize++;
+		break;
+	default:
+		break;
+	}
+	
+	//classRosterArray[arraySize] = new Student(studentID, firstName, lastName, email, age, daysInCourse, degree);
+	//classRosterArray[arraySize]->print();
+	//arraySize++;
 }
 
 void Roster::remove(string studentID) {

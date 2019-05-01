@@ -1,9 +1,4 @@
 #pragma once
-
-#include <string>
-#include <vector>
-#include <sstream>
-#include "degree.h"
 #include "student.h"
 
 using namespace std;
@@ -18,7 +13,7 @@ public:
 	void printDaysInCourse(string studentID);
 	void printInvalidEmails();
 	void printByDegreeProgram(int degree);
-	Student* classRosterArray[5]; // array of student objects
+	Student* classRosterArray[5];
 	~Roster();
 
 private:

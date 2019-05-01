@@ -2,7 +2,7 @@
 
 enum Degree
 {
-	UNDEFINED,
+	UNKNOWN,
 	SECURITY, 
 	NETWORK, 
 	SOFTWARE
