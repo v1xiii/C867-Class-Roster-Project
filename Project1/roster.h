@@ -12,7 +12,7 @@ public:
 	void printAll();
 	void printDaysInCourse(string studentID);
 	void printInvalidEmails();
-	void printByDegreeProgram(int degree);
+	void printByDegreeProgram(Degree degree);
 	Student* classRosterArray[5];
 	~Roster();
 

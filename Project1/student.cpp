@@ -75,24 +75,21 @@ int* Student::getDaysToComplete() {
 	return this->daysToComplete;
 }
 
-
 Degree Student::getDegree() {
 	return degree;
 }
 
-
 // helpers
-
 void Student::print() {
 	cout << getStudentID() << "\t";
 	cout << "First Name: " << getFirstName() << "\t";
 	cout << "Last Name: " << getLastName() << "\t";
 	cout << "Age: " << getAge() << "\t";
-	cout << "daysInCourse: " << daysToComplete[0] << "," << daysToComplete[1] << "," << daysToComplete[2] << "\t";
+	cout << "daysInCourse: " << getDaysToComplete()[0] << "," << getDaysToComplete()[1] << "," << getDaysToComplete()[2] << "\t";
 	cout << " Degree Program: " << getDegreeProgram();
 	cout << endl;
 }
 
 Degree Student::getDegreeProgram() {
-	return UNKNOWN;
+	return degree;
 }

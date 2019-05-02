@@ -15,7 +15,7 @@ void securityStudent::print() {
 	cout << "First Name: " << getFirstName() << "\t";
 	cout << "Last Name: " << getLastName() << "\t";
 	cout << "Age: " << getAge() << "\t";
-	cout << "daysInCourse: " << daysToComplete[0] << "," << daysToComplete[1] << "," << daysToComplete[2] << "\t";
+	cout << "daysInCourse: " << getDaysToComplete()[0] << "," << getDaysToComplete()[1] << "," << getDaysToComplete()[2] << "\t";
 	cout << " Degree Program: " << "SECURITY";
 	cout << endl;
 }
