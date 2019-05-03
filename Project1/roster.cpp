@@ -78,18 +78,20 @@ int main() {
 			degree = SOFTWARE;
 		}
 		
-		// add to final classRoster array
+		// add student object to final classRoster array
 		classRoster.add(studentID, firstName, lastName, email, age, daysInCourse1, daysInCourse2, daysInCourse3, degree);
 	}
 
-	//classRoster.printAll;
-	//classRoster.printInvalidEmails();
+	classRoster.printAll();
+	classRoster.printInvalidEmails();
 
-	// for classRosterArray
-		// classRoster.printDaysInCourse(i);
-		// classRoster.printByDegreeProgram();
-	// endfor
+	string ids[5] = { "A1", "A2", "A3", "A4", "A5" }; // I really shouldn't have to do this...
+	for (int i = 0; i < 5; i++)	{
+		//string id = classRosterArray[i]->getStudentId(); // why can't I access the classRosterArray from here?
+		classRoster.printDaysInCourse(ids[i]);
+	}
 
+	// classRoster.printByDegreeProgram(SOFTWARE);
 	// classRoster.remove("A3");
 	// classRoster.remove("A3"); // this one should throw a 'not found' error
 
@@ -103,22 +105,22 @@ void Roster::add(string studentID, string firstName, string lastName, string ema
 	{
 	case SECURITY:
 		classRosterArray[arraySize] = new securityStudent(studentID, firstName, lastName, email, age, daysInCourse, degree);
-		classRosterArray[arraySize]->print();
+		//classRosterArray[arraySize]->print();
 		arraySize++;
 		break;
 	case NETWORK:
 		classRosterArray[arraySize] = new networkStudent(studentID, firstName, lastName, email, age, daysInCourse, degree);
-		classRosterArray[arraySize]->print();
+		//classRosterArray[arraySize]->print();
 		arraySize++;
 		break;
 	case SOFTWARE:
 		classRosterArray[arraySize] = new softwareStudent(studentID, firstName, lastName, email, age, daysInCourse, degree);
-		classRosterArray[arraySize]->print();
+		//classRosterArray[arraySize]->print();
 		arraySize++;
 		break;
 	default:
 		classRosterArray[arraySize] = new Student(studentID, firstName, lastName, email, age, daysInCourse, degree);
-		classRosterArray[arraySize]->print();
+		//classRosterArray[arraySize]->print();
 		arraySize++;
 		break;
 	}
@@ -129,15 +131,55 @@ void Roster::add(string studentID, string firstName, string lastName, string ema
 }
 
 void Roster::printAll() {
+	cout << "ALL STUDENTS |" << endl;
+	cout << "==============" << endl;
 
+	for (int i = 0; i < 5; i++)	{
+		this->classRosterArray[i]->print();
+	}
+
+	cout << endl;
 }
 
 void Roster::printInvalidEmails() {
+	cout << "INVALID EMAILS |" << endl;
+	cout << "================" << endl;
 
+	for (int i = 0; i < 5; i++)	{
+		string email = this->classRosterArray[i]->getEmail();
+		bool invalid = false;
+
+		if (email.find('@', 0) == string::npos) { // if character has no position in the string
+			invalid = true; // the email is invalid
+		}
+
+		if (email.find('.', 0) == string::npos) {
+			invalid = true;
+		}
+
+		if (email.find(' ', 0) != string::npos) {
+			invalid = true;
+		}
+
+		if (invalid == true) {
+			cout << email << endl;
+		}
+	}
+
+	cout << endl;
 }
 
 void Roster::printDaysInCourse(string studentID) {
+	cout << "AVERAGE DAYS TO COMPLETE A COURSE |" << endl;
+	cout << "===================================" << endl;
 
+	for (int i = 0; i < 5; i++) {
+		int* days = classRosterArray[i]->getDaysToComplete();
+		int avg = (days[0] + days[1] + days[2]) / 3;
+		cout << days << endl;
+	}
+	
+	cout << endl;
 }
 
 void Roster::printByDegreeProgram(Degree degree) {
