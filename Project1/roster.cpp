@@ -85,10 +85,12 @@ int main() {
 	classRoster.printAll();
 	classRoster.printInvalidEmails();
 
-	string ids[5] = { "A1", "A2", "A3", "A4", "A5" }; // I really shouldn't have to do this...
-	for (int i = 0; i < 5; i++)	{
-		//string id = classRosterArray[i]->getStudentId(); // why can't I access the classRosterArray from here?
-		classRoster.printDaysInCourse(ids[i]);
+	cout << "AVERAGE DAYS TO COMPLETE A COURSE |" << endl;
+	cout << "===================================" << endl;
+	//string ids[5] = { "A1", "A2", "A3", "A4", "A5" };
+	for (int i = 0; i < 5; i++)	{ // for each student object:
+		string id = classRoster.classRosterArray[i]->getStudentID(); // get the student ID,
+		classRoster.printDaysInCourse(id); // send the ID to the averager.
 	}
 
 	// classRoster.printByDegreeProgram(SOFTWARE);
@@ -170,13 +172,14 @@ void Roster::printInvalidEmails() {
 }
 
 void Roster::printDaysInCourse(string studentID) {
-	cout << "AVERAGE DAYS TO COMPLETE A COURSE |" << endl;
-	cout << "===================================" << endl;
+	cout << studentID << " - " ;
 
 	for (int i = 0; i < 5; i++) {
-		int* days = classRosterArray[i]->getDaysToComplete();
-		int avg = (days[0] + days[1] + days[2]) / 3;
-		cout << days << endl;
+		if (classRosterArray[i]->getStudentID() == studentID) { // if studentID matches the studentID of any objects in classRosterArray:
+			int* days = classRosterArray[i]->getDaysToComplete(); // get the numbers from that object,
+			int avg = (days[0] + days[1] + days[2]) / 3; // average them,
+			cout << avg << endl; // output them.
+		}
 	}
 	
 	cout << endl;
