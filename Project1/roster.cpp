@@ -11,8 +11,7 @@
 
 using namespace std;
 
-Roster::Roster()
-{
+Roster::Roster() {
 }
 
 int main() {
@@ -40,8 +39,7 @@ int main() {
 	}
 	
 	//parse vector
-	for (int i = 0; i < 5; i++)
-	{
+	for (int i = 0; i < 5; i++)	{
 		stringstream ss(studentDataV[i]);
 		vector<string> result;
 		
@@ -65,16 +63,13 @@ int main() {
 
 		// convert degree name string to enum
 		Degree degree;
-		if (tempDegree == "SECURITY")
-		{
+		if (tempDegree == "SECURITY") {
 			degree = SECURITY;
-		}
-		else if (tempDegree == "NETWORK")
-		{
+		} 
+		else if (tempDegree == "NETWORK")	{
 			degree = NETWORK;
-		}
-		else if (tempDegree == "SOFTWARE")
-		{
+		} 
+		else if (tempDegree == "SOFTWARE") {
 			degree = SOFTWARE;
 		}
 		
@@ -83,7 +78,9 @@ int main() {
 	}
 
 	classRoster.printAll();
+	cout << endl;
 	classRoster.printInvalidEmails();
+	cout << endl;
 
 	cout << "AVERAGE DAYS TO COMPLETE A COURSE |" << endl;
 	cout << "===================================" << endl;
@@ -92,10 +89,13 @@ int main() {
 		string id = classRoster.classRosterArray[i]->getStudentID(); // get the student ID,
 		classRoster.printDaysInCourse(id); // send the ID to the averager.
 	}
+	cout << endl;
 
-	// classRoster.printByDegreeProgram(SOFTWARE);
-	// classRoster.remove("A3");
-	// classRoster.remove("A3"); // this one should throw a 'not found' error
+	classRoster.printByDegreeProgram(SOFTWARE);
+	cout << endl;
+	classRoster.remove("A3");
+	cout << endl;
+	classRoster.remove("A3"); // this one should throw a 'not found' error
 
 	return 0; // destructor called
 }
@@ -103,8 +103,7 @@ int main() {
 void Roster::add(string studentID, string firstName, string lastName, string email, int age, int daysInCourse1, int daysInCourse2, int daysInCourse3, Degree degree) {
 	int daysInCourse[3] = { daysInCourse1, daysInCourse2, daysInCourse3 };
 	
-	switch (degree)
-	{
+	switch (degree)	{
 	case SECURITY:
 		classRosterArray[arraySize] = new securityStudent(studentID, firstName, lastName, email, age, daysInCourse, degree);
 		//classRosterArray[arraySize]->print();
@@ -136,18 +135,16 @@ void Roster::printAll() {
 	cout << "ALL STUDENTS |" << endl;
 	cout << "==============" << endl;
 
-	for (int i = 0; i < 5; i++)	{
+	for (int i = 0; i < arraySize; i++)	{
 		this->classRosterArray[i]->print();
 	}
-
-	cout << endl;
 }
 
 void Roster::printInvalidEmails() {
 	cout << "INVALID EMAILS |" << endl;
 	cout << "================" << endl;
 
-	for (int i = 0; i < 5; i++)	{
+	for (int i = 0; i < arraySize; i++)	{
 		string email = this->classRosterArray[i]->getEmail();
 		bool invalid = false;
 
@@ -167,32 +164,64 @@ void Roster::printInvalidEmails() {
 			cout << email << endl;
 		}
 	}
-
-	cout << endl;
 }
 
 void Roster::printDaysInCourse(string studentID) {
 	cout << studentID << " - " ;
 
-	for (int i = 0; i < 5; i++) {
+	for (int i = 0; i < arraySize; i++) {
 		if (classRosterArray[i]->getStudentID() == studentID) { // if studentID matches the studentID of any objects in classRosterArray:
 			int* days = classRosterArray[i]->getDaysToComplete(); // get the numbers from that object,
 			int avg = (days[0] + days[1] + days[2]) / 3; // average them,
 			cout << avg << endl; // output them.
 		}
 	}
-	
-	cout << endl;
 }
 
 void Roster::printByDegreeProgram(Degree degree) {
+	string degreeString = "";
+	
+	if (degree == SECURITY)	{
+		degreeString = "SECURITY";
+	}
+	else if (degree == NETWORK)	{
+		degreeString = "NETWORK";
+	}
+	else if (degree == SOFTWARE) {
+		degreeString = "SOFTWARE";
+	}
 
+	cout << "STUDENTS LISTED BY DEGREE: " << degreeString << " |" << endl;
+	cout << "=====================================" << endl;
+
+	for (int i = 0; i < arraySize; i++)	{
+		if (classRosterArray[i]->getDegree() == degree) {
+			classRosterArray[i]->print();
+		}
+	}
 }
 
 void Roster::remove(string studentID) {
-
+	cout << "... SEARCHING FOR STUDENT " << studentID << endl;
+	bool found = false;
+	for (int i = 0; i < arraySize; i++)	{
+		if (classRosterArray[i] != nullptr) {
+			if (classRosterArray[i]->getStudentID() == studentID) {
+				found = true;
+				classRosterArray[i] = nullptr;
+				delete classRosterArray[i];
+				arraySize--;
+			}
+		}
+	}
+	
+	if (found == true) {
+		cout << "==> STUDENT " << studentID << " DELETED" << endl;
+	}
+	else {
+		cout << "!!! STUDENT " << studentID << " NOT FOUND" << endl;
+	}
 }
 
-Roster::~Roster()
-{
+Roster::~Roster() {
 }

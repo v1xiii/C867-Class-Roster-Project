@@ -15,10 +15,6 @@ Student::Student(string studentID, string firstName, string lastName, string ema
 	this->setDegree(degree);
 }
 
-Student::~Student()
-{
-}
-
 // setters
 void Student::setStudentID(string studentID) {
 	this->studentID = studentID;
@@ -92,4 +88,7 @@ void Student::print() {
 
 Degree Student::getDegreeProgram() {
 	return degree;
+}
+
+Student::~Student() {
 }

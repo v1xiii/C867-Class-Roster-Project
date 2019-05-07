@@ -20,6 +20,5 @@ void softwareStudent::print() { // STILL REFUSING TO DO A TAB AFTER FIRST NAME -
 	cout << endl;
 }
 
-softwareStudent::~softwareStudent()
-{
+softwareStudent::~softwareStudent() {
 }

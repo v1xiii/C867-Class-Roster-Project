@@ -20,6 +20,5 @@ void securityStudent::print() {
 	cout << endl;
 }
 
-securityStudent::~securityStudent()
-{
+securityStudent::~securityStudent() {
 }

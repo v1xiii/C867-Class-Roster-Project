@@ -1,7 +1,6 @@
 #pragma once
 
-enum Degree
-{
+enum Degree {
 	SECURITY, 
 	NETWORK, 
 	SOFTWARE

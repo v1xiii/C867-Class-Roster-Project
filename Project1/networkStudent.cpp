@@ -20,6 +20,5 @@ void networkStudent::print() {
 	cout << endl;
 }
 
-networkStudent::~networkStudent()
-{
+networkStudent::~networkStudent() {
 }
